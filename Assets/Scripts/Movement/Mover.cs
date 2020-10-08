@@ -1,33 +1,36 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Mover : MonoBehaviour
+namespace RPG.Movement
 {
-    [SerializeField] Transform target;
-    NavMeshAgent navMeshAgent;
-
-    Animator animator;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Mover : MonoBehaviour
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-    }
+        [SerializeField] Transform target;
+        NavMeshAgent navMeshAgent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateAnimator();
-    }
+        Animator animator;
 
-    public void MoveTo(Vector3 destination)
-    {
-        navMeshAgent.SetDestination(destination);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponent<Animator>();
+        }
 
-    private void UpdateAnimator()
-    {
-        animator.SetFloat("speed", navMeshAgent.velocity.magnitude);
+        // Update is called once per frame
+        void Update()
+        {
+            UpdateAnimator();
+        }
+
+        public void MoveTo(Vector3 destination)
+        {
+            navMeshAgent.SetDestination(destination);
+        }
+
+        private void UpdateAnimator()
+        {
+            animator.SetFloat("speed", navMeshAgent.velocity.magnitude);
+        }
     }
 }
