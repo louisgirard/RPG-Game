@@ -1,14 +1,10 @@
-﻿using System;
-using System.Net.NetworkInformation;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class Mover : MonoBehaviour
 {
     [SerializeField] Transform target;
     NavMeshAgent navMeshAgent;
-    Ray ray;
 
     Animator animator;
 
@@ -22,21 +18,12 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move to click
-        if (Input.GetMouseButton(0))
-        {
-            MoveToCursor();
-        }
         UpdateAnimator();
     }
 
-    private void MoveToCursor()
+    public void MoveTo(Vector3 destination)
     {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            navMeshAgent.SetDestination(hit.point);
-        }
+        navMeshAgent.SetDestination(destination);
     }
 
     private void UpdateAnimator()
