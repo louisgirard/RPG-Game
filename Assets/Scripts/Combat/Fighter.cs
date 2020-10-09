@@ -10,11 +10,13 @@ namespace RPG.Combat
         Transform target;
         Mover mover;
         ActionScheduler actionScheduler;
+        Animator animator;
 
         private void Start()
         {
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
+            animator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -24,11 +26,13 @@ namespace RPG.Combat
                 bool isInRange = Vector3.Distance(transform.position, target.position) <= weaponRange;
                 if (!isInRange)
                 {
+                    // Move to target
                     mover.MoveTo(target.position, weaponRange);
                 }
                 else
                 {
-
+                    // Attack target
+                    animator.SetTrigger("attack");
                 }
             }
         }
@@ -41,7 +45,14 @@ namespace RPG.Combat
 
         public void Cancel()
         {
+            animator.SetTrigger("stopAttack");
             target = null;
+        }
+
+        // Animation event
+        private void Hit()
+        {
+
         }
     }
 }
