@@ -23,9 +23,10 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float stoppingDistance = 2f)
         {
             navMeshAgent.SetDestination(destination);
+            navMeshAgent.stoppingDistance = stoppingDistance;
         }
 
         private void UpdateAnimator()
