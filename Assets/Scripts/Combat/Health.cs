@@ -22,5 +22,10 @@ namespace RPG.Combat
                 isDead = true;
             }
         }
+
+        public bool IsDead()
+        {
+            return isDead;
+        }
     }
 }
