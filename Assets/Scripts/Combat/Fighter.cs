@@ -47,6 +47,7 @@ namespace RPG.Combat
 
         private void AttackBehaviour()
         {
+            FaceTarget();
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
                 // Attack target, this will trigger the Hit() event
@@ -58,6 +59,7 @@ namespace RPG.Combat
         // Animation event
         private void Hit()
         {
+            if (target == null) return;
             target.TakeDamage(5);
         }
 
@@ -71,6 +73,13 @@ namespace RPG.Combat
         {
             animator.SetTrigger("stopAttack");
             target = null;
+        }
+
+        private void FaceTarget()
+        {
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
         }
     }
 }
