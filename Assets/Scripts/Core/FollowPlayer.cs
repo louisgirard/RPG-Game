@@ -4,7 +4,12 @@ namespace RPG.Core
 {
     public class FollowPlayer : MonoBehaviour
     {
-        [SerializeField] Transform player;
+        Transform player;
+
+        private void Start()
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
         // Update is called once per frame
         void LateUpdate()
