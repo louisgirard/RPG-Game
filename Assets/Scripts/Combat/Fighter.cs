@@ -51,9 +51,17 @@ namespace RPG.Combat
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
                 // Attack target, this will trigger the Hit() event
+                animator.ResetTrigger("stopAttack");
                 animator.SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }
+        }
+
+        private void FaceTarget()
+        {
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
         }
 
         // Animation event
@@ -69,22 +77,16 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
-        public void Cancel()
-        {
-            animator.SetTrigger("stopAttack");
-            target = null;
-        }
-
-        private void FaceTarget()
-        {
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 3);
-        }
-
         public bool CanAttack(CombatTarget combatTarget)
         {
             return (combatTarget != null && !combatTarget.GetComponent<Health>().IsDead());
+        }
+
+        public void Cancel()
+        {
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
+            target = null;
         }
     }
 }
