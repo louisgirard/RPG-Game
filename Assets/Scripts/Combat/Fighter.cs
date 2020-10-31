@@ -71,13 +71,13 @@ namespace RPG.Combat
             target.TakeDamage(5);
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             actionScheduler.StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             return (combatTarget != null && !combatTarget.GetComponent<Health>().IsDead());
         }
