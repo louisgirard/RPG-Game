@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da924ef541cdc14890df4b8b640b220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2.5
+  weaponRange: 2
   timeBetweenAttacks: 1
 --- !u!114 &1282859533
 MonoBehaviour:
@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edbc640e5b1d3040af87f9feb656f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 100

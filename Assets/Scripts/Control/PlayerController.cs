@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
-using TMPro;
+using RPG.Core;
 
 namespace RPG.Control
 {    public class PlayerController : MonoBehaviour
     {
         Mover mover;
         Fighter fighter;
+        Health health;
 
         // Start is called before the first frame update
         void Start()
         {
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(InteractWithCombat()) { return; }
-            if (InteractWithMovement()) { return; }
-            print("nothing to do");
+            if (health.IsDead()) return;
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
         }
 
         private bool InteractWithCombat()
