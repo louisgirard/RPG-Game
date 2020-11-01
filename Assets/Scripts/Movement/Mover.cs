@@ -7,6 +7,7 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction
     {
         NavMeshAgent navMeshAgent;
+        float maxSpeed;
 
         Animator animator;
         ActionScheduler actionScheduler;
@@ -16,6 +17,7 @@ namespace RPG.Movement
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            maxSpeed = navMeshAgent.speed;
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
             health = GetComponent<Health>();
@@ -28,15 +30,16 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 destination)
+        public void StartMoveAction(Vector3 destination, float speedCoef = 1f)
         {
             actionScheduler.StartAction(this);
-            MoveTo(destination);
+            MoveTo(destination, 2f, speedCoef);
         }
 
-        public void MoveTo(Vector3 destination, float stoppingDistance = 2f)
+        public void MoveTo(Vector3 destination, float stoppingDistance = 2f, float speedCoef = 1f)
         {
             navMeshAgent.SetDestination(destination);
+            navMeshAgent.speed = maxSpeed * speedCoef;
             navMeshAgent.stoppingDistance = stoppingDistance;
             navMeshAgent.isStopped = false;
         }

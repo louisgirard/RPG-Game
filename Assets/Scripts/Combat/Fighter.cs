@@ -8,6 +8,7 @@ namespace RPG.Combat
     {
         [SerializeField] float weaponRange = 3f;
         [SerializeField] float timeBetweenAttacks = 1f;
+        [SerializeField] float weaponDamage = 5f;
 
         float timeSinceLastAttack = Mathf.Infinity;
         Health target;
@@ -68,7 +69,7 @@ namespace RPG.Combat
         private void Hit()
         {
             if (target == null) return;
-            target.TakeDamage(5);
+            target.TakeDamage(weaponDamage);
         }
 
         public void Attack(GameObject combatTarget)

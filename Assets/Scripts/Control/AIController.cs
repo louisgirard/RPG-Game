@@ -2,8 +2,7 @@
 using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
-using System.IO;
-using System;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -12,6 +11,7 @@ namespace RPG.Control
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspiciousTime = 3f;
         [SerializeField] PatrolPath patrolPath;
+        [SerializeField] float patrolSpeedCoef = 0.6f;
         [SerializeField] float waypointTolerance = 2f;
         [SerializeField] float waypointDwellTime = 2f;
 
@@ -85,7 +85,7 @@ namespace RPG.Control
 
             if(timeSinceDwelling > waypointDwellTime)
             {
-                mover.StartMoveAction(nextPosition);
+                mover.StartMoveAction(nextPosition, patrolSpeedCoef);
             }
         }
 
