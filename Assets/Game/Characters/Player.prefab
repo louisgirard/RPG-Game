@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db44d33afcc2ab4a92d7800a577981f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &403465704
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787781158970058897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3504696
+  m_Height: 1.8105907
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9908347, z: 0}
 --- !u!1001 &5282236137860355561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,17 +108,17 @@ PrefabInstance:
     - target: {fileID: 3293851976781233741, guid: 4c4d29de68ee5854bb044f22e9148f1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.0947113
+      value: -39.34
       objectReference: {fileID: 0}
     - target: {fileID: 3293851976781233741, guid: 4c4d29de68ee5854bb044f22e9148f1b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 3293851976781233741, guid: 4c4d29de68ee5854bb044f22e9148f1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.43322
+      value: 40.41
       objectReference: {fileID: 0}
     - target: {fileID: 3293851976781233741, guid: 4c4d29de68ee5854bb044f22e9148f1b,
         type: 3}
@@ -145,6 +159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3504119163803262646, guid: 4c4d29de68ee5854bb044f22e9148f1b,
+        type: 3}
+      propertyPath: health
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4466553455559671048, guid: 4c4d29de68ee5854bb044f22e9148f1b,
         type: 3}
